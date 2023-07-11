@@ -123,204 +123,81 @@
 
 
 		<!-- Content page -->
-		<div class="container-fluid">
-			<div class="page-header">
-			  <h1 class="text-titles">MINORS 2023 <small>Zona 2</small></h1>
+<div class="container-fluid">
+	<div class="page-header">
+		<h1 class="text-titles">MINORS 2023 <small>Zona 2</small></h1>
+	</div>
+</div>
+
+<?php
+// Conexión a la base de datos
+include 'conexiondb.php';
+
+// Verificar la conexión
+if ($conn->connect_error) {
+	die("Error de conexión: " . $conn->connect_error);
+}
+
+// Consulta a la tabla proyectosejecucion
+$sql = "SELECT nombre, col FROM proyectosejecucion";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	while ($row = $result->fetch_assoc()) {
+		$nombre = $row["nombre"];
+		$col = $row["col"];
+		?>
+
+		<article class="full-box tile">
+			<a href="<?php echo $nombre; ?>.php">
+				<div class="full-box tile-title text-center text-titles text-uppercase">
+					<?php echo $nombre; ?>
+				</div>
+			</a>
+			<div class="full-box tile-icon text-center">
+				<i class="zmdi zmdi-home"></i>
 			</div>
-		</div>
+			<div class="full-box tile-number text-titles">
+				<p class="full-box"><?php echo $col; ?></p>
+				<small>Col</small>
+			</div>
+		</article>
+		<?php
+	}
+} else {
+	echo "No se encontraron proyectos.";
+}
 
-		
+// Cerrar la conexión
+$conn->close();
+?>
+</section>
 
-		<article id="proyecto1" class="full-box tile">
-    <a href="proyecto1.php">
-        <div class="full-box tile-title text-center text-titles text-uppercase">
-            LA MINA
-        </div>
-    </a>
-    <div class="full-box tile-icon text-center">
-        <i class="zmdi zmdi-home"></i>
-    </div>
-    <div class="full-box tile-number text-titles">
-        <p class="full-box">1611</p>
-        <small>Col</small>
-    </div>
-</article>
+<script>
+    // Obtén una lista de elementos de artículo por su clase
+    var articulos = document.getElementsByClassName('full-box tile');
 
+    // Recorre todos los elementos de artículo y agrega los controladores de eventos
+    for (var i = 0; i < articulos.length; i++) {
+        var articuloElement = articulos[i];
 
+        // Agrega un controlador de eventos de clic al ícono de la casita
+        var iconoElement = articuloElement.querySelector('.tile-icon');
+        iconoElement.addEventListener('click', function() {
+            var datosProyectoUrl = this.parentElement.getAttribute('href');
+            window.open(datosProyectoUrl, '_blank', 'width=800,height=700');
+        });
 
-
-			<article class="full-box tile">
-				
-				<a href="proyecto2.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					LA GABRIELA
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">0914</p>
-					<small>Col</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				
-				<a href="proyecto3.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					LA AMÉRICA
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">0032</p>
-					<small>Col</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				
-				<a href="proyecto4.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					TOS/SALON LA AMÉRICA
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">----</p>
-					<small>Col</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				
-				<a href="proyecto5.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					ORQUIDEAS ENVIGADO
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">0337</p>
-					<small>Col</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				
-				<a href="proyecto6.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					CALASANZ
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">----</p>
-					<small>Col</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				
-				<a href="proyecto7.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					CHIGORODÓ
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">1262</p>
-					<small>Col</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				
-				<a href="proyecto8.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					APTS / SAN ANTONIO DE PRADO
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">0245</p>
-					<small>Col</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				
-				<a href="proyecto9.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					CÓRDOBAS / CANALETE-CÓRDOBA
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">1622</p>
-					<small>Col</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				
-				<a href="proyecto10.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					BERASTEGUI / CÍENAGA-CÓRDOBA
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">1186</p>
-					<small>Col</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				
-				<a href="proyecto11.php">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					ANZA / ANTIOQUIA
-				</div>
-				</a>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-home"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">2371</p>
-					<small>Col</small>
-				</div>
-			</article>
-		</div>
-		
-	</section>
-	
-	<script>
-    // Obtén una referencia al elemento del proyecto
-    var proyectoElement = document.getElementById('proyecto1');
-
-    // Agrega un controlador de eventos de clic al ícono de la casita
-    var iconoElement = proyectoElement.querySelector('.tile-icon');
-    iconoElement.addEventListener('click', function() {
-        window.open('datosproyecto.php', '_blank', 'width=800,height=700');
- 
-    });
-
-    // Agrega un controlador de eventos de clic al título del artículo
-    var tituloElement = proyectoElement.querySelector('.tile-title');
-    tituloElement.addEventListener('click', function() {
-        // Aquí puedes redirigir al enlace del artículo
-        window.location.href = "proyecto1.php";
-    });
+        // Agrega un controlador de eventos de clic al título del artículo
+        var tituloElement = articuloElement.querySelector('.tile-title');
+        tituloElement.addEventListener('click', function() {
+            var proyectoUrl = this.parentElement.getAttribute('href');
+            // Aquí puedes redirigir al enlace del artículo
+            window.location.href = proyectoUrl;
+        });
+    }
 </script>
+
 
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/sweetalert2.min.js"></script>
