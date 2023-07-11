@@ -184,8 +184,8 @@ $conn->close();
         // Agrega un controlador de eventos de clic al ícono de la casita
         var iconoElement = articuloElement.querySelector('.tile-icon');
         iconoElement.addEventListener('click', function() {
-            var datosProyectoUrl = this.parentElement.getAttribute('href');
-            window.open(datosProyectoUrl, '_blank', 'width=800,height=700');
+            var nombreProyecto = this.closest('article').querySelector('.tile-title').textContent;
+            window.open('datosproyecto.php?nombre=' + encodeURIComponent(nombreProyecto), '_blank', 'width=800,height=700');
         });
 
         // Agrega un controlador de eventos de clic al título del artículo
@@ -197,6 +197,7 @@ $conn->close();
         });
     }
 </script>
+
 
 
 	<script src="./js/jquery-3.1.1.min.js"></script>
