@@ -133,11 +133,6 @@
 // Conexión a la base de datos
 include 'conexiondb.php';
 
-// Verificar la conexión
-if ($conn->connect_error) {
-	die("Error de conexión: " . $conn->connect_error);
-}
-
 // Consulta a la tabla proyectosejecucion
 $sql = "SELECT nombre, col FROM proyectosejecucion";
 $result = $conn->query($sql);
