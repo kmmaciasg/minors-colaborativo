@@ -6,7 +6,7 @@ include 'conexiondb.php';
 $nombreProyecto = $_GET['nombre'];
 
 // Consulta SQL para obtener los datos del proyecto
-$sql = "SELECT col, brv, asistentes, fondos, inicio FROM proyectosejecucion WHERE nombre = '$nombreProyecto'";
+$sql = "SELECT * FROM proyectosejecucion WHERE nombre = '$nombreProyecto'";
 
 // Ejecutar la consulta
 $resultado = mysqli_query($conn, $sql);
@@ -24,7 +24,16 @@ if ($resultado) {
             'brv' => $fila['brv'],
             'asistentes' => $fila['asistentes'],
             'fondos' => $fila['fondos'],
-            'inicio' => $fila['inicio']
+            'inicio' => $fila['inicio'],
+            'diseños' => $fila['diseños'],
+            'acciondiseño' => $fila['acciondiseño'],
+            'rtadiseño' => $fila['rtadiseño'],
+            'materiales' => $fila['materiales'],
+            'enviodocumentos' => $fila['enviodocumentos'],
+            'tareasbuilder' => $fila['tareasbuilder'],
+            'cronograma' => $fila['cronograma'],
+            'herramientas' => $fila['herramientas'],
+            'voluntarios' => $fila['voluntarios']
         );
 
         // Realizar la segunda consulta para obtener los datos de progresopasoapaso

@@ -76,7 +76,12 @@
                         </div>
                     </div>
                 </div>
-                <br><br><br>
+                <br>  <br>  <br>
+                <div class="progress-bar" style="margin-left: 185px;">
+  <div class="progress" ></div>
+  <span class="progress-percent" id="porcentaje"></span>
+</div>
+                <br><br>
                 <div class="row">
                     <div class="col-xs-6 col-md-6">
                         <div class="full-box tile-text text-titles">
@@ -114,12 +119,11 @@
     </div>
 
     <input type="hidden" id="fasea">
-    <div class="container-fluid">
-        <br>
-        <div id="barraProgreso">
-            <div id="progreso" style="width: 0;"></div>
-        </div>
-    </div>
+    <br>
+
+
+   </div>
+</div>
 
     <script src="./js/jquery-3.1.1.min.js"></script>
     <script src="./js/sweetalert2.min.js"></script>
@@ -174,27 +178,12 @@
                         }
                     }
 
-                    // Crear una nueva instancia de ProgressBar
-var progressBar = new ProgressBar.Line('#progreso', {
-  strokeWidth: 4,
-  easing: 'easeInOut',
-  duration: 1000,
-  color: '#FFEA82',
-  trailColor: '#eee',
-  trailWidth: 1,
-  svgStyle: { width: '100%', height: '100%' },
-  from: { color: '#FFEA82' },
-  to: { color: '#ED6A5A' },
-  step: function(state, bar) {
-    bar.path.setAttribute('stroke', state.color);
-  }
-});
-
-// Actualizar la barra de progreso
-var faseActual = parseInt(document.getElementById('fasea').value);
+                    var faseActual = parseInt(document.getElementById('fasea').value);
 var totalFases = 17;
 var porcentajeProgreso = (faseActual / totalFases) * 100;
-progressBar.set(porcentajeProgreso / 100);
+document.getElementById('porcentaje').textContent = porcentajeProgreso + '%';
+document.querySelector('.progress').style.width = porcentajeProgreso + '%';
+
 
                 }
             };

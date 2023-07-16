@@ -45,6 +45,64 @@ body, html{
 	font-family: 'RobotoCondensed';
 	overflow: hidden;
 }
+.progress-bar {
+	width: 50%;
+	height: 20px;
+	background-color: #ffffff;
+	position: relative;
+	
+	
+	border: 1px solid #ccc; /* Agrega el borde gris */
+	
+	border-radius: 5px; /* Ajusta el valor según tus preferencias */
+  }
+  
+  .progress {
+	width: 0;
+	height: 100%;
+	background-color: #000000;
+	transition: width 0.3s ease;
+	position: relative;
+	overflow: hidden;
+	
+	border-radius: 5px 0 0 5px; /* Ajusta el valor según tus preferencias */
+  }
+  
+  .progress:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: linear-gradient(45deg, rgba(31, 64, 172, 0.788) 25%, transparent 25%, transparent 50%, rgba(31, 64, 172, 0.788) 50%, rgba(31, 64, 172, 0.788) 75%, transparent 75%, transparent);
+	background-size: 50px 50px;
+	z-index: 1;
+	animation: stripes 2s linear infinite;
+  }
+  
+  @keyframes stripes {
+	0% {
+	  background-position: 0 0;
+	}
+	100% {
+	  background-position: 50px 50px;
+	}
+  }
+  
+  .progress-percent {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: black;
+	font-weight: bold;
+  }
+  
+  
+  
+
+  
 .full-box{
 	margin: 0;
 	padding: 0;
