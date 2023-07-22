@@ -125,7 +125,7 @@
 			<div class="page-header">
 			  <h1 class="text-titles"><i class="zmdi zmdi-home zmdi-hc-fw"></i> LA GABRIELA <small>Col 0914</small></h1>
 			</div>
-			<div class="container-fluid">
+            <div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
@@ -240,11 +240,9 @@
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
 </form>
-
-<form action="">
-<div class="table-responsive">
-								<table id="tablaActividades" class="table table-hover text-center">
-								
+<form id="actividadesForm">
+    <div class="table-responsive">
+        <table id="tablaActividades" class="table table-hover text-center">
         <thead>
             <tr>
                 <th>ID</th>
@@ -256,13 +254,15 @@
             </tr>
         </thead>
         <tbody></tbody>
-    </table>
-							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregar">
-								<i class="zmdi zmdi-check">Agregar Actividad</i>
-								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-								<br><br>
+        </table>
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregaractividad">
+        <i class="zmdi zmdi-check">Agregar Actividad</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+    <br><br>
 </form>
+
 
 									</div>
 								</div>
@@ -274,7 +274,7 @@
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
 									
 
-<form action="">
+<form id="reunionesForm">
 <div class="table-responsive">
 								<table id="tablareuniones" class="table table-hover text-center">
 								
@@ -291,12 +291,22 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregar">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarreunion">
 								<i class="zmdi zmdi-check">Agregar Reunion</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
 </form>
 
+<div id="dialog" style="display: none;">
+<h4>Seleccione el tipo de Reunion que desea Agregar</h4>
+    <select id="reunionSelect">
+        <option value="ENCARGADOS DE OBRA">ENCARGADOS DE OBRA</option>
+        <option value="CUERPO(S) DE ANCIANOS">CUERPO(S) DE ANCIANOS</option>
+        <option value="CONTACTO LOCAL">CONTACTO LOCAL</option>
+        <option value="SEGURIDAD Y CONTROL">SEGURIDAD Y CONTROL</option>
+    </select>
+    <button onclick="closeDialog()">Aceptar</button>
+</div>
 
 </div>
 								</div>
@@ -307,7 +317,7 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
 									
-<form action="">
+<form id="encargadoobraForm">
 <div class="table-responsive">
 								<table id="tablaencargados" class="table table-hover text-center">
 								
@@ -323,7 +333,7 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregar">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarencargadoobra">
 								<i class="zmdi zmdi-check">Agregar Encargado</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
@@ -339,7 +349,7 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
 									
-<form action="">
+<form id="capacitadorForm">
 <div class="table-responsive">
 								<table id="tablacapacitador" class="table table-hover text-center">
 								
@@ -355,7 +365,7 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregar">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarcapacitador">
 								<i class="zmdi zmdi-check">Agregar Capacitador</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
@@ -371,7 +381,7 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
 									
-<form action="">
+<form id="contactoseguridadForm">
 <h4>Contactos seguridad y control de calidad</h4>
 <div class="table-responsive">
 								<table id="tablaseguridad" class="table table-hover text-center">
@@ -388,13 +398,13 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregar">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarcontactoseguridad">
 								<i class="zmdi zmdi-check">Agregar Contacto seguridad</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
 </form>
 
-<form action="">
+<form  id="contactoseguridadForm">
 	<h4>Contactos soporte de seguridad y control de calidad</h4>
 <div class="table-responsive">
 								<table id="tablasoporteseguridad" class="table table-hover text-center">
@@ -411,7 +421,7 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregar">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarsoporteseguridad">
 								<i class="zmdi zmdi-check">Agregar Soporte seguridad</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
@@ -426,7 +436,7 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
 									
-<form action="">
+<form id="contactoseguridadForm">
 <div class="table-responsive">
 								<table id="tablacontactolocal" class="table table-hover text-center">
 								
@@ -442,7 +452,7 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregar">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarcontactolocal">
 								<i class="zmdi zmdi-check">Agregar Contacto local</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
@@ -458,9 +468,9 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
 									
-<form action="">
+<form id="builderForm">
 <div class="table-responsive">
-								<table id="tablasoporte" class="table table-hover text-center">
+								<table id="tablasoportebuilder" class="table table-hover text-center">
 								
         <thead>
             <tr>
@@ -474,7 +484,7 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregar">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarsoportebuilder">
 								<i class="zmdi zmdi-check">Agregar Soporte</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
@@ -490,7 +500,7 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
 									
-<form action="">
+<form id="reporteForm">
 <div class="table-responsive">
 								<table id="tablareporte" class="table table-hover text-center">
 								
@@ -506,7 +516,7 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregar">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarreporte">
 								<i class="zmdi zmdi-check">Agregar Reporte Fotografico</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
@@ -524,7 +534,438 @@
 	<span id="nombreProyecto" style="hidden"></span>
 
 	<!--====== Scripts -->
-	
+    <script>
+    document.getElementById("agregarencargadoobra").addEventListener("click", function (event) {
+        event.preventDefault(); // Bloquear el envío del formulario
+
+        // Obtener el nombre del proyecto de la URL
+        const url = window.location.href;
+        const nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+
+    console.log("Nombre del proyecto: ", nombreProyecto);
+        // Obtener la descripción y el encargado mediante prompts
+        const encargado = prompt("Ingrese el nombre del encargado de obra:");
+        const cel = prompt("Ingrese el numero de celular del encargado de obra:");
+        const ba = prompt("Ingrese el numero de Builder Asistant del encargado de obra:");
+        const habilidad = prompt("Ingrese la habilidad del encargado de obra:");
+
+        // Verificar que se ingresaron descripción y encargado antes de enviar los datos al PHP
+        if (cel && encargado) {
+            // Crear un objeto FormData para enviar los datos al PHP
+            const formData = new FormData();
+            formData.append("proyecto", nombreProyecto);
+            formData.append("cel", cel);
+            formData.append("encargado", encargado);
+            formData.append("ba", ba);
+            formData.append("habilidad", habilidad);
+
+            // Crear una nueva solicitud XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud POST al archivo PHP
+            xhr.open("POST", "agregarencargadoobra.php", true);
+
+            // Manejar la respuesta del servidor (opcional)
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Aquí puedes realizar acciones adicionales si la inserción fue exitosa
+                    console.log(xhr.responseText);
+                    location.reload();
+                } else {
+                    // Aquí puedes manejar errores en caso de que ocurra algún problema con la inserción
+                    console.error("Error en la solicitud al servidor.");
+                }
+            };
+
+            // Enviar la solicitud con los datos del formulario
+            xhr.send(formData);
+            
+        } else {
+            alert("Debe ingresar la descripción y el encargado de la actividad.");
+        }
+       
+    });
+</script>
+<script>
+    document.getElementById("agregarcontactoseguridad").addEventListener("click", function (event) {
+        event.preventDefault(); // Bloquear el envío del formulario
+
+        // Obtener el nombre del proyecto de la URL
+        const url = window.location.href;
+        const nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+
+    console.log("Nombre del proyecto: ", nombreProyecto);
+        // Obtener la descripción y el encargado mediante prompts
+        const encargado = prompt("Ingrese el nombre del contacto de seguridad:");
+        const cel = prompt("Ingrese el numero de celular del contacto de seguridad:");
+        const ba = prompt("Ingrese el numero de Builder Asistant del contacto de seguridad:");
+        const funcion = prompt("Ingrese la funcion del contacto de seguridad:");
+
+        // Verificar que se ingresaron descripción y encargado antes de enviar los datos al PHP
+        if (cel && encargado) {
+            // Crear un objeto FormData para enviar los datos al PHP
+            const formData = new FormData();
+            formData.append("proyecto", nombreProyecto);
+            formData.append("cel", cel);
+            formData.append("encargado", encargado);
+            formData.append("ba", ba);
+            formData.append("funcion", funcion);
+
+            // Crear una nueva solicitud XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud POST al archivo PHP
+            xhr.open("POST", "agregarcontactoseguridad.php", true);
+
+            // Manejar la respuesta del servidor (opcional)
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Aquí puedes realizar acciones adicionales si la inserción fue exitosa
+                    console.log(xhr.responseText);
+                    location.reload();
+                } else {
+                    // Aquí puedes manejar errores en caso de que ocurra algún problema con la inserción
+                    console.error("Error en la solicitud al servidor.");
+                }
+            };
+
+            // Enviar la solicitud con los datos del formulario
+            xhr.send(formData);
+            
+        } else {
+            alert("Debe ingresar la descripción y el encargado de la actividad.");
+        }
+       
+    });
+</script>
+<script>
+    document.getElementById("agregarsoporteseguridad").addEventListener("click", function (event) {
+        event.preventDefault(); // Bloquear el envío del formulario
+
+        // Obtener el nombre del proyecto de la URL
+        const url = window.location.href;
+        const nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+
+    console.log("Nombre del proyecto: ", nombreProyecto);
+        // Obtener la descripción y el encargado mediante prompts
+        const encargado = prompt("Ingrese el nombre del soporte de seguridad:");
+        const cel = prompt("Ingrese el numero de celular del soporte de seguridad:");
+        const ba = prompt("Ingrese el numero de Builder Asistant del soporte de seguridad:");
+        const funcion = prompt("Ingrese la funcion del soporte de seguridad:");
+
+        // Verificar que se ingresaron descripción y encargado antes de enviar los datos al PHP
+        if (cel && encargado) {
+            // Crear un objeto FormData para enviar los datos al PHP
+            const formData = new FormData();
+            formData.append("proyecto", nombreProyecto);
+            formData.append("cel", cel);
+            formData.append("encargado", encargado);
+            formData.append("ba", ba);
+            formData.append("funcion", funcion);
+
+            // Crear una nueva solicitud XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud POST al archivo PHP
+            xhr.open("POST", "agregarsoporteseguridad.php", true);
+
+            // Manejar la respuesta del servidor (opcional)
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Aquí puedes realizar acciones adicionales si la inserción fue exitosa
+                    console.log(xhr.responseText);
+                    location.reload();
+                } else {
+                    // Aquí puedes manejar errores en caso de que ocurra algún problema con la inserción
+                    console.error("Error en la solicitud al servidor.");
+                }
+            };
+
+            // Enviar la solicitud con los datos del formulario
+            xhr.send(formData);
+            
+        } else {
+            alert("Debe ingresar la descripción y el encargado de la actividad.");
+        }
+       
+    });
+</script>
+<script>
+    document.getElementById("agregarcontactolocal").addEventListener("click", function (event) {
+        event.preventDefault(); // Bloquear el envío del formulario
+
+        // Obtener el nombre del proyecto de la URL
+        const url = window.location.href;
+        const nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+
+    console.log("Nombre del proyecto: ", nombreProyecto);
+        // Obtener la descripción y el encargado mediante prompts
+        const encargado = prompt("Ingrese el nombre del contacto local:");
+        const cel = prompt("Ingrese el numero de celular del contacto local:");
+        const ba = prompt("Ingrese el numero de Builder Asistant del contacto local:");
+        const funcion = prompt("Ingrese la funcion del contacto local:");
+
+        // Verificar que se ingresaron descripción y encargado antes de enviar los datos al PHP
+        if (cel && encargado) {
+            // Crear un objeto FormData para enviar los datos al PHP
+            const formData = new FormData();
+            formData.append("proyecto", nombreProyecto);
+            formData.append("cel", cel);
+            formData.append("encargado", encargado);
+            formData.append("ba", ba);
+            formData.append("funcion", funcion);
+
+            // Crear una nueva solicitud XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud POST al archivo PHP
+            xhr.open("POST", "agregarcontactolocal.php", true);
+
+            // Manejar la respuesta del servidor (opcional)
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Aquí puedes realizar acciones adicionales si la inserción fue exitosa
+                    console.log(xhr.responseText);
+                    location.reload();
+                } else {
+                    // Aquí puedes manejar errores en caso de que ocurra algún problema con la inserción
+                    console.error("Error en la solicitud al servidor.");
+                }
+            };
+
+            // Enviar la solicitud con los datos del formulario
+            xhr.send(formData);
+            
+        } else {
+            alert("Debe ingresar la descripción y el encargado de la actividad.");
+        }
+       
+    });
+</script>
+<script>
+    document.getElementById("agregarsoportebuilder").addEventListener("click", function (event) {
+        event.preventDefault(); // Bloquear el envío del formulario
+
+        // Obtener el nombre del proyecto de la URL
+        const url = window.location.href;
+        const nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+
+    console.log("Nombre del proyecto: ", nombreProyecto);
+        // Obtener la descripción y el encargado mediante prompts
+        const encargado = prompt("Ingrese el nombre del contacto de soporte de builder asistant:");
+        const cel = prompt("Ingrese el numero de celular del contacto de soporte de builder asistant:");
+        const ba = prompt("Ingrese el numero de Builder Asistant del contacto de soporte de builder asistant:");
+        const funcion = prompt("Ingrese la funcion del contacto de soporte de builder asistant:");
+
+        // Verificar que se ingresaron descripción y encargado antes de enviar los datos al PHP
+        if (cel && encargado) {
+            // Crear un objeto FormData para enviar los datos al PHP
+            const formData = new FormData();
+            formData.append("proyecto", nombreProyecto);
+            formData.append("cel", cel);
+            formData.append("encargado", encargado);
+            formData.append("ba", ba);
+            formData.append("funcion", funcion);
+
+            // Crear una nueva solicitud XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud POST al archivo PHP
+            xhr.open("POST", "agregarsoportebuilder.php", true);
+
+            // Manejar la respuesta del servidor (opcional)
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Aquí puedes realizar acciones adicionales si la inserción fue exitosa
+                    console.log(xhr.responseText);
+                    location.reload();
+                } else {
+                    // Aquí puedes manejar errores en caso de que ocurra algún problema con la inserción
+                    console.error("Error en la solicitud al servidor.");
+                }
+            };
+
+            // Enviar la solicitud con los datos del formulario
+            xhr.send(formData);
+            
+        } else {
+            alert("Debe ingresar la descripción y el encargado de la actividad.");
+        }
+       
+    });
+</script>
+<script>
+    document.getElementById("agregarreporte").addEventListener("click", function (event) {
+        event.preventDefault(); // Bloquear el envío del formulario
+
+        // Obtener el nombre del proyecto de la URL
+        const url = window.location.href;
+        const nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+
+    console.log("Nombre del proyecto: ", nombreProyecto);
+        // Obtener la descripción y el encargado mediante prompts
+        const encargado = prompt("Ingrese el nombre del encargado del reporte fotográfico:");
+        const cel = prompt("Ingrese el numero de celular del encargado del reporte fotográfico:");
+        const ba = prompt("Ingrese el numero de Builder Asistant del encargado del reporte fotográfico:");
+        const funcion = prompt("Ingrese la funcion del encargado del reporte fotográfico:");
+
+        // Verificar que se ingresaron descripción y encargado antes de enviar los datos al PHP
+        if (cel && encargado) {
+            // Crear un objeto FormData para enviar los datos al PHP
+            const formData = new FormData();
+            formData.append("proyecto", nombreProyecto);
+            formData.append("cel", cel);
+            formData.append("encargado", encargado);
+            formData.append("ba", ba);
+            formData.append("funcion", funcion);
+
+            // Crear una nueva solicitud XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud POST al archivo PHP
+            xhr.open("POST", "agregarreporte.php", true);
+
+            // Manejar la respuesta del servidor (opcional)
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Aquí puedes realizar acciones adicionales si la inserción fue exitosa
+                    console.log(xhr.responseText);
+                    location.reload();
+                } else {
+                    // Aquí puedes manejar errores en caso de que ocurra algún problema con la inserción
+                    console.error("Error en la solicitud al servidor.");
+                }
+            };
+
+            // Enviar la solicitud con los datos del formulario
+            xhr.send(formData);
+            
+        } else {
+            alert("Debe ingresar la descripción y el encargado de la actividad.");
+        }
+       
+    });
+</script>
+
+<script>
+    document.getElementById("agregarcapacitador").addEventListener("click", function (event) {
+        event.preventDefault(); // Bloquear el envío del formulario
+
+        // Obtener el nombre del proyecto de la URL
+        const url = window.location.href;
+        const nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+
+    console.log("Nombre del proyecto: ", nombreProyecto);
+        // Obtener la descripción y el encargado mediante prompts
+        const encargado = prompt("Ingrese el nombre del capacitador:");
+        const cel = prompt("Ingrese el numero de celular del capacitador:");
+        const ba = prompt("Ingrese el numero de Builder Asistant del capacitador:");
+        const funcion = prompt("Ingrese la funcion del capacitador:");
+
+        // Verificar que se ingresaron descripción y encargado antes de enviar los datos al PHP
+        if (cel && encargado) {
+            // Crear un objeto FormData para enviar los datos al PHP
+            const formData = new FormData();
+            formData.append("proyecto", nombreProyecto);
+            formData.append("cel", cel);
+            formData.append("encargado", encargado);
+            formData.append("ba", ba);
+            formData.append("funcion", funcion);
+
+            // Crear una nueva solicitud XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud POST al archivo PHP
+            xhr.open("POST", "agregarcapacitador.php", true);
+
+            // Manejar la respuesta del servidor (opcional)
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Aquí puedes realizar acciones adicionales si la inserción fue exitosa
+                    console.log(xhr.responseText);
+                    location.reload();
+                } else {
+                    // Aquí puedes manejar errores en caso de que ocurra algún problema con la inserción
+                    console.error("Error en la solicitud al servidor.");
+                }
+            };
+
+            // Enviar la solicitud con los datos del formulario
+            xhr.send(formData);
+            
+        } else {
+            alert("Debe ingresar la descripción y el encargado de la actividad.");
+        }
+       
+    });
+</script>
+
+	<script>
+    document.getElementById("agregarreunion").addEventListener("click", function (event) {
+        event.preventDefault(); // Bloquear el envío del formulario
+
+        // Mostrar el cuadro de diálogo personalizado
+        const dialog = document.getElementById("dialog");
+        dialog.style.display = "block";
+    });
+
+    function closeDialog() {
+        // Ocultar el cuadro de diálogo personalizado
+        const dialog = document.getElementById("dialog");
+        dialog.style.display = "none";
+
+        // Obtener el nombre del proyecto de la URL
+        const url = window.location.href;
+        const nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+        console.log("Nombre del proyecto: ", nombreProyecto);
+
+        // Obtener la opción de reunión seleccionada
+        const reunionSelect = document.getElementById("reunionSelect");
+        const reunionSeleccionada = reunionSelect.value;
+
+        // Verificar que se seleccionó una reunión antes de continuar
+        if (reunionSeleccionada) {
+            // Solicitar la fecha de la reunión mediante un prompt con campo "date"
+            const fechaReunion = prompt("Ingrese la fecha de la reunión (formato: AAAA-MM-DD):");
+
+            // Verificar que se ingresó la fecha antes de enviar los datos al PHP
+            if (fechaReunion) {
+                // Crear un objeto FormData para enviar los datos al PHP
+                const formData = new FormData();
+                formData.append("proyecto", nombreProyecto);
+                formData.append("reunion", reunionSeleccionada);
+                formData.append("fecha_reunion", fechaReunion);
+
+                // Crear una nueva solicitud XMLHttpRequest
+                const xhr = new XMLHttpRequest();
+
+                // Configurar la solicitud POST al archivo PHP
+                xhr.open("POST", "agregarreunion.php", true);
+
+                // Manejar la respuesta del servidor (opcional)
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        // Aquí puedes realizar acciones adicionales si la inserción fue exitosa
+                        console.log(xhr.responseText);
+                        location.reload();
+                    } else {
+                        // Aquí puedes manejar errores en caso de que ocurra algún problema con la inserción
+                        console.error("Error en la solicitud al servidor.");
+                    }
+                };
+
+                // Enviar la solicitud con los datos del formulario
+                xhr.send(formData);
+
+            } else {
+                alert("Debe ingresar la fecha de la reunión.");
+            }
+        } else {
+            alert("Debe seleccionar un tipo de reunión válido.");
+        }
+    }
+</script>
+
 	<script>
     window.addEventListener('DOMContentLoaded', function() {
         var url = window.location.href;
@@ -555,6 +996,55 @@
         xhr.send();
     });
 </script>
+<script>
+    document.getElementById("agregaractividad").addEventListener("click", function (event) {
+        event.preventDefault(); // Bloquear el envío del formulario
+
+        // Obtener el nombre del proyecto de la URL
+        const url = window.location.href;
+        const nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+
+    console.log("Nombre del proyecto: ", nombreProyecto);
+        // Obtener la descripción y el encargado mediante prompts
+        const descripcion = prompt("Ingrese la descripción de la actividad:");
+        const encargado = prompt("Ingrese el nombre del encargado:");
+
+        // Verificar que se ingresaron descripción y encargado antes de enviar los datos al PHP
+        if (descripcion && encargado) {
+            // Crear un objeto FormData para enviar los datos al PHP
+            const formData = new FormData();
+            formData.append("proyecto", nombreProyecto);
+            formData.append("descripcion", descripcion);
+            formData.append("encargado", encargado);
+
+            // Crear una nueva solicitud XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud POST al archivo PHP
+            xhr.open("POST", "agregaractividad.php", true);
+
+            // Manejar la respuesta del servidor (opcional)
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Aquí puedes realizar acciones adicionales si la inserción fue exitosa
+                    console.log(xhr.responseText);
+                    location.reload();
+                } else {
+                    // Aquí puedes manejar errores en caso de que ocurra algún problema con la inserción
+                    console.error("Error en la solicitud al servidor.");
+                }
+            };
+
+            // Enviar la solicitud con los datos del formulario
+            xhr.send(formData);
+            
+        } else {
+            alert("Debe ingresar la descripción y el encargado de la actividad.");
+        }
+       
+    });
+</script>
+
 <script>
         window.addEventListener('DOMContentLoaded', function() {
 			var url = window.location.href;
@@ -743,7 +1233,7 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var respuesta = JSON.parse(xhr.responseText);
-                    var tabla = document.getElementById('tablasoporte');
+                    var tabla = document.getElementById('tablasoportebuilder');
                     var tbody = tabla.getElementsByTagName('tbody')[0];
 
                     // Limpiar el contenido existente en la tabla
@@ -958,7 +1448,6 @@
         xhr.send();
     });
 </script>
-
 <script>
         // JavaScript para enviar datos al servidor
         document.getElementById("actualizar").addEventListener("click", function() {
@@ -1015,6 +1504,9 @@
             xhr.send(JSON.stringify(datosFormulario));
         });
     </script>
+
+
+
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/sweetalert2.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
