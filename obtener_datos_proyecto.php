@@ -70,8 +70,8 @@ if ($resultado) {
                     );
 
                     // Realizar la tercera consulta para obtener los registros correspondientes
-                    $paso = $fila2['idpasoapaso'];
-                    $sql4 = "SELECT * FROM `pasoapaso` WHERE fase = '$fase' AND punto = '$paso'";
+                    $paso = $fila2['paso'];
+                    $sql4 = "SELECT * FROM `pasoapaso` WHERE fase = '$fase' AND id = '$paso'";
                     $resultado4 = mysqli_query($conn, $sql4);
 
                     if ($resultado4 && mysqli_num_rows($resultado4) > 0) {

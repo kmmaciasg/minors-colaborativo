@@ -958,6 +958,63 @@
         xhr.send();
     });
 </script>
+<script>
+        // JavaScript para enviar datos al servidor
+        document.getElementById("actualizar").addEventListener("click", function() {
+            // Obtener el nombre del proyecto de la URL
+            var url = window.location.href;
+            var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+
+            // Obtener los valores ingresados en cada campo del formulario
+            var fondos = document.getElementById("fondos").value;
+            var fecha = document.getElementById("fecha").value;
+            var diseños = document.getElementById("diseños").value;
+            var acciondiseño = document.getElementById("acciondiseño").value;
+            var enviodocumentos = document.getElementById("enviodocumentos").value;
+            var tareasbuilder = document.getElementById("tareasbuilder").value;
+            var rtadiseño = document.getElementById("rtadiseño").value;
+            var cronograma = document.getElementById("cronograma").value;
+            var herramientas = document.getElementById("herramientas").value;
+            var voluntarios = document.getElementById("voluntarios").value;
+            var materiales = document.getElementById("materiales").value;
+
+            // Crear un objeto con los datos del formulario y el nombre del proyecto
+            var datosFormulario = {
+                nombre_proyecto: nombreProyecto,
+                fondos: fondos,
+                fecha: fecha,
+                diseños: diseños,
+                acciondiseño: acciondiseño,
+                enviodocumentos: enviodocumentos,
+                tareasbuilder: tareasbuilder,
+                rtadiseño: rtadiseño,
+                cronograma: cronograma,
+                herramientas: herramientas,
+                voluntarios: voluntarios,
+                materiales: materiales
+            };
+
+            // Enviar los datos al servidor mediante una solicitud AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "procesar_formulario.php", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Aquí puedes manejar la respuesta del servidor si lo deseas
+                        console.log(xhr.responseText);
+                        location.reload(); 
+                    } else {
+                        // Manejar errores en caso de que la solicitud no se complete correctamente
+                        console.error("Error al enviar datos al servidor.");
+                        location.reload(); 
+                    }
+                }
+            };
+            xhr.send(JSON.stringify(datosFormulario));
+        });
+    </script>
+
 
 
 	<script src="./js/jquery-3.1.1.min.js"></script>
