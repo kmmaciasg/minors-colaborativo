@@ -4,20 +4,18 @@
 include 'conexiondb.php';
 
 // Obtenemos los datos enviados via AJAX
-$idproyecto = $_POST["idproyecto"];
-$idactividad = $_POST["idactividad"];
-$descripcion = $_POST["descripcion"];
-$encargado = $_POST["encargado"];
-$notas = $_POST["notas"];
-$avance = $_POST["avance"];
+$id = $_POST["nombrerf"];
+$fecha = $_POST["celrf"];
+$estado = $_POST["funcionrf"];
+$notas = $_POST["barf"];
 
-// Consulta SQL para actualizar los datos en la tabla actividadesaprobadas
-$sqlUpdate = "UPDATE `actividadesaprobadas` SET descripcion = ?, encargado = ?, notas = ?, avance = ? WHERE id = ?";
+// Consulta SQL para actualizar los datos en la tabla reunionesproyectos
+$sqlUpdate = "UPDATE `reportefotografico` SET cel = ?, numba = ?, funcion = ? WHERE nombre = ?";
 
 // Preparar la consulta
 if ($stmt = mysqli_prepare($conn, $sqlUpdate)) {
     // Asignar los parámetros
-    mysqli_stmt_bind_param($stmt, "ssssi", $descripcion, $encargado, $notas, $avance, $idactividad);
+    mysqli_stmt_bind_param($stmt, "sssi", $fecha, $notas, $estado, $id);
 
     // Ejecutar la consulta
     if (mysqli_stmt_execute($stmt)) {
@@ -38,5 +36,3 @@ if ($stmt = mysqli_prepare($conn, $sqlUpdate)) {
 // Cerrar la conexión
 mysqli_close($conn);
 ?>
-
-

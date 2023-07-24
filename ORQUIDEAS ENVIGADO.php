@@ -125,7 +125,7 @@
 			<div class="page-header">
 			  <h1 class="text-titles"><i class="zmdi zmdi-home zmdi-hc-fw"></i> ORQUIDEAS ENVIGADO <small>Col 0337</small></h1>
 			</div>
-			<div class="container-fluid">
+            <div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
@@ -240,6 +240,33 @@
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
 </form>
+       
+<div id="ventana-emergente" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Actividad</h4>
+   <form>
+	   <label >Id Proyecto:</label>
+	   <input type="text" id="idproyecto" readonly><br>
+	   <label >Id Actividad:</label>
+	   <input type="text" id="idactividad" readonly><br>
+	   <label >Descripcion:</label>
+	   <textarea id="descripcion"></textarea><br>
+	   <label>Encargado:</label>
+	   <input type="text" id="encargado"><br>
+       <label>Notas:</label>
+	   <input type="text" id="notas"><br>
+       <label>Avance:</label>
+	   <input type="text" id="avance"><br>
+	  <br>
+
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 85px;" id="btn-guardar-cambios">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div>       
 <form id="actividadesForm">
     <div class="table-responsive">
         <table id="tablaActividades" class="table table-hover text-center">
@@ -256,8 +283,12 @@
         <tbody></tbody>
         </table>
     </div>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregaractividad">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 185px;" id="agregaractividad">
         <i class="zmdi zmdi-check">Agregar Actividad</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizaractividad">
+        <i class="zmdi zmdi-check">Actualizar Actividad</i>
         <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
     </button>
     <br><br>
@@ -291,10 +322,14 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarreunion">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 155px;" id="agregarreunion">
 								<i class="zmdi zmdi-check">Agregar Reunion</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-								<br><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizarreunion">
+        <i class="zmdi zmdi-check">Actualizar Reunion</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+                                <br><br>
 </form>
 
 <div id="dialog" style="display: none;">
@@ -307,7 +342,28 @@
     </select>
     <button onclick="closeDialog()">Aceptar</button>
 </div>
+<div id="ventana-emergente1" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Reunion</h4>
+   <form>
+	   <label >Id Reunion:</label>
+	   <input type="text" id="id" readonly><br>
+	   <label >Notas:</label>
+	   <textarea id="notasR"></textarea><br>
+	   <label>Fecha:</label>
+	   <input type="date" id="fechar"><br>
+       <label>Estado:</label>
+	   <input type="text" id="estado"><br><br>
+	  <br>
 
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 85px;" id="btn-guardar-cambiosr">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div>  
 </div>
 								</div>
 							</div>
@@ -333,12 +389,37 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarencargadoobra">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 155px;" id="agregarencargadoobra">
 								<i class="zmdi zmdi-check">Agregar Encargado</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-								<br><br>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizarencargado">
+        <i class="zmdi zmdi-check">Actualizar Encargado</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+                                <br><br>
 </form>
+<div id="ventana-emergente2" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Encargado</h4>
+   <form>
+	   <label >Nombre:</label>
+	   <input type="text" id="nombree" readonly><br>
+	   <label >cel:</label>
+	   <input type="text" id="cele"><br>
+	   <label>Numero Builder Asistant:</label>
+	   <input type="text" id="bae"><br>
+       <label>Habilidad:</label>
+	   <input type="text" id="habilidade"><br><br>
+	  <br>
 
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 85px;" id="btn-guardar-cambiose">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div>  
 
 </div>
 								</div>
@@ -365,11 +446,37 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarcapacitador">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 155px;" id="agregarcapacitador">
 								<i class="zmdi zmdi-check">Agregar Capacitador</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-								<br><br>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizarcapacitador">
+        <i class="zmdi zmdi-check">Actualizar Capacitador</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+                                <br><br>
 </form>
+<div id="ventana-emergente3" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Capacitador</h4>
+   <form>
+	   <label >Nombre:</label>
+	   <input type="text" id="nombrec" readonly><br>
+	   <label >cel:</label>
+	   <input type="text" id="celc"><br>
+	   <label>Numero Builder Asistant:</label>
+	   <input type="text" id="bac"><br>
+       <label>Funcion:</label>
+	   <input type="text" id="funcionc"><br><br>
+	  <br>
+
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 185px;" id="btn-guardar-cambiosc">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div>  
 
 
 </div>
@@ -401,10 +508,35 @@
 	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarcontactoseguridad">
 								<i class="zmdi zmdi-check">Agregar Contacto seguridad</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-								<br><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizarcontactoseguridad">
+        <i class="zmdi zmdi-check">Actualizar Contacto</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+                                <br><br>
 </form>
+<div id="ventana-emergente4" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Contacto Seguridad</h4>
+   <form>
+	   <label >Nombre:</label>
+	   <input type="text" id="nombrecs" readonly><br>
+	   <label >cel:</label>
+	   <input type="text" id="celcs"><br>
+	   <label>Numero Builder Asistant:</label>
+	   <input type="text" id="bacs"><br>
+       <label>Funcion:</label>
+	   <input type="text" id="funcioncs"><br><br>
+	  <br>
 
-<form  id="contactoseguridadForm">
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 185px;" id="btn-guardar-cambioscs">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div> 
+<form  id="contactosoporteseguridadForm">
 	<h4>Contactos soporte de seguridad y control de calidad</h4>
 <div class="table-responsive">
 								<table id="tablasoporteseguridad" class="table table-hover text-center">
@@ -424,9 +556,34 @@
 	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarsoporteseguridad">
 								<i class="zmdi zmdi-check">Agregar Soporte seguridad</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-								<br><br>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizarsoporteseguridad">
+        <i class="zmdi zmdi-check">Actualizar Contacto</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+                                <br><br>
 </form>
+<div id="ventana-emergente5" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Contacto Soporte Seguridad</h4>
+   <form>
+	   <label >Nombre:</label>
+	   <input type="text" id="nombress" readonly><br>
+	   <label >cel:</label>
+	   <input type="text" id="celss"><br>
+	   <label>Numero Builder Asistant:</label>
+	   <input type="text" id="bass"><br>
+       <label>Funcion:</label>
+	   <input type="text" id="funcionss"><br><br>
+	  <br>
 
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 185px;" id="btn-guardar-cambiosss">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div> 
 </div>
 								</div>
 							</div>
@@ -436,7 +593,7 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
 									
-<form id="contactoseguridadForm">
+<form id="contactolocalForm">
 <div class="table-responsive">
 								<table id="tablacontactolocal" class="table table-hover text-center">
 								
@@ -452,12 +609,37 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarcontactolocal">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 155px;" id="agregarcontactolocal">
 								<i class="zmdi zmdi-check">Agregar Contacto local</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-								<br><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizarcontactolocal">
+        <i class="zmdi zmdi-check">Actualizar Contacto</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+                                <br><br>
 </form>
+<div id="ventana-emergente6" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Contacto local</h4>
+   <form>
+	   <label >Nombre:</label>
+	   <input type="text" id="nombrecl" readonly><br>
+	   <label >cel:</label>
+	   <input type="text" id="celcl"><br>
+	   <label>Numero Builder Asistant:</label>
+	   <input type="text" id="bacl"><br>
+       <label>Funcion:</label>
+	   <input type="text" id="funcioncl"><br><br>
+	  <br>
 
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 185px;" id="btn-guardar-cambioscl">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div> 
 
 </div>
 								</div>
@@ -484,12 +666,37 @@
         <tbody></tbody>
     </table>
 							</div>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarsoportebuilder">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 155px;" id="agregarsoportebuilder">
 								<i class="zmdi zmdi-check">Agregar Soporte</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-								<br><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizarbuilder">
+        <i class="zmdi zmdi-check">Actualizar Soporte Builder Asistant</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+                                <br><br>
 </form>
+<div id="ventana-emergente7" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Soporte Builder Asistant</h4>
+   <form>
+	   <label >Nombre:</label>
+	   <input type="text" id="nombreba" readonly><br>
+	   <label >cel:</label>
+	   <input type="text" id="celba"><br>
+	   <label>Numero Builder Asistant:</label>
+	   <input type="text" id="baba"><br>
+       <label>Funcion:</label>
+	   <input type="text" id="funcionba"><br><br>
+	  <br>
 
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 185px;" id="btn-guardar-cambiosba">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div> 
 
 </div>
 								</div>
@@ -519,9 +726,35 @@
 	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregarreporte">
 								<i class="zmdi zmdi-check">Agregar Reporte Fotografico</i>
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-								<br><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizarreporte">
+        <i class="zmdi zmdi-check">Actualizar Reporte </i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+                                <br><br>
 </form>
 
+<div id="ventana-emergente8" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Reporte Fotografico</h4>
+   <form>
+	   <label >Nombre:</label>
+	   <input type="text" id="nombrerf" readonly><br>
+	   <label >cel:</label>
+	   <input type="text" id="celrf"><br>
+	   <label>Numero Builder Asistant:</label>
+	   <input type="text" id="barf"><br>
+       <label>Funcion:</label>
+	   <input type="text" id="funcionrf"><br><br>
+	  <br>
+
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 185px;" id="btn-guardar-cambiosrf">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div> 
 
 </div>
 								</div>
@@ -1517,5 +1750,563 @@
 	<script>
 		$.material.init();
 	</script>
+     <script>
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizaractividad").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el ID de la actividad a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_actividades.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#idproyecto").val(resultado.idproyecto);
+                        $("#idactividad").val(resultado.id);
+                        $("#descripcion").val(resultado.descripcion);
+                        $("#encargado").val(resultado.encargado);
+                        $("#notas").val(resultado.notas);
+                        $("#avance").val(resultado.avance);
+                    },
+                    error: function() {
+                        alert("Error al buscar el lote");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambios").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var idproyecto = $("#idproyecto").val();
+                var idactividad = $("#idactividad").val();
+                var descripcion = $("#descripcion").val();
+                var encargado = $("#encargado").val();
+                var notas = $("#notas").val();
+                var avance = $("#avance").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_actividades.php",
+	type: "POST",
+	data: {
+		idproyecto: idproyecto,
+		idactividad: idactividad,
+		descripcion: descripcion,
+		encargado: encargado,
+		notas: notas,
+		avance: avance,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+
+    <script>
+
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizarreunion").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el ID de la reunion a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_reuniones.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente1").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#id").val(resultado.id);
+                        $("#fechar").val(resultado.fecha);
+                        $("#notasR").val(resultado.notas);
+                        $("#estado").val(resultado.estado);
+                    },
+                    error: function() {
+                        alert("Error al buscar la reunion");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambiosr").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var id = $("#id").val();
+                var fechaR = $("#fechar").val();
+                var notasR = $("#notasR").val();
+                var estado = $("#estado").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_reuniones.php",
+	type: "POST",
+	data: {
+		id: id,
+		fechaR: fechaR,
+		notasR: notasR,
+		estado: estado,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente1").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+<script>
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizarencargado").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el nombre del encargado a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_encargado.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente2").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#nombree").val(resultado.nombre);
+                        $("#bae").val(resultado.numba);
+                        $("#cele").val(resultado.cel);
+                        $("#habilidade").val(resultado.habilidad);
+                    },
+                    error: function() {
+                        alert("Error al buscar la reunion");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambiose").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var nombree = $("#nombree").val();
+                var bae = $("#bae").val();
+                var cele = $("#cele").val();
+                var habilidade = $("#habilidade").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_encargado.php",
+	type: "POST",
+	data: {
+		nombree:nombree,
+		bae: bae,
+		cele: cele,
+		habilidade: habilidade,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente2").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+<script>
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizarcapacitador").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el nombre del capacitador a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_capacitador.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente3").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#nombrec").val(resultado.nombre);
+                        $("#bac").val(resultado.numba);
+                        $("#celc").val(resultado.cel);
+                        $("#funcionc").val(resultado.funcion);
+                    },
+                    error: function() {
+                        alert("Error al buscar la reunion");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambiosc").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var nombrec = $("#nombrec").val();
+                var bac = $("#bac").val();
+                var celc = $("#celc").val();
+                var funcionc = $("#funcionc").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_capacitador.php",
+	type: "POST",
+	data: {
+		nombrec:nombrec,
+		bac: bac,
+		celc: celc,
+		funcionc: funcionc,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente3").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+<script>
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizarcontactoseguridad").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el nombre del contacto a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_contactoseguridad.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente4").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#nombrecs").val(resultado.nombre);
+                        $("#bacs").val(resultado.numba);
+                        $("#celcs").val(resultado.cel);
+                        $("#funcioncs").val(resultado.funcion);
+                    },
+                    error: function() {
+                        alert("Error al buscar la reunion");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambioscs").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var nombrecs = $("#nombrecs").val();
+                var bacs = $("#bacs").val();
+                var celcs = $("#celcs").val();
+                var funcioncs = $("#funcioncs").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_contactoseguridad.php",
+	type: "POST",
+	data: {
+		nombrecs:nombrecs,
+		bacs: bacs,
+		celcs: celcs,
+		funcioncs: funcioncs,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente4").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+<script>
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizarcontactolocal").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el nombre del contacto a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_contactolocal.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente6").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#nombrecl").val(resultado.nombre);
+                        $("#bacl").val(resultado.numba);
+                        $("#celcl").val(resultado.cel);
+                        $("#funcioncl").val(resultado.funcion);
+                    },
+                    error: function() {
+                        alert("Error al buscar la reunion");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambioscl").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var nombrecl = $("#nombrecl").val();
+                var bacl = $("#bacl").val();
+                var celcl = $("#celcl").val();
+                var funcioncl = $("#funcioncl").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_contactolocal.php",
+	type: "POST",
+	data: {
+		nombrecl:nombrecl,
+		bacl: bacl,
+		celcl: celcl,
+		funcioncl: funcioncl,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente6").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+<script>
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizarsoporteseguridad").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el nombre del contacto a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_soporteseguridad.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente5").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#nombress").val(resultado.nombre);
+                        $("#bass").val(resultado.numba);
+                        $("#celss").val(resultado.cel);
+                        $("#funcionss").val(resultado.funcion);
+                    },
+                    error: function() {
+                        alert("Error al buscar la reunion");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambiosss").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var nombress = $("#nombress").val();
+                var bass = $("#bass").val();
+                var celss = $("#celss").val();
+                var funcionss = $("#funcionss").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_soporteseguridad.php",
+	type: "POST",
+	data: {
+		nombress:nombress,
+		bass: bass,
+		celss: celss,
+		funcionss: funcionss,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente5").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+<script>
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizarbuilder").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el nombre del contacto a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_builder.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente7").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#nombreba").val(resultado.nombre);
+                        $("#baba").val(resultado.numba);
+                        $("#celba").val(resultado.cel);
+                        $("#funcionba").val(resultado.funcion);
+                    },
+                    error: function() {
+                        alert("Error al buscar la reunion");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambiosba").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var nombreba = $("#nombreba").val();
+                var baba = $("#baba").val();
+                var celba = $("#celba").val();
+                var funcionba = $("#funcionba").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_builder.php",
+	type: "POST",
+	data: {
+		nombreba:nombreba,
+		baba: baba,
+		celba: celba,
+		funcionba: funcionba,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente7").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+<script>
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizarreporte").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el nombre del reporte a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_reporte.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente8").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#nombrerf").val(resultado.nombre);
+                        $("#barf").val(resultado.numba);
+                        $("#celrf").val(resultado.cel);
+                        $("#funcionrf").val(resultado.funcion);
+                    },
+                    error: function() {
+                        alert("Error al buscar la reunion");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambiosrf").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var nombrerf = $("#nombrerf").val();
+                var barf = $("#barf").val();
+                var celrf = $("#celrf").val();
+                var funcionrf = $("#funcionrf").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_reporte.php",
+	type: "POST",
+	data: {
+		nombrerf:nombrerf,
+		barf: barf,
+		celrf: celrf,
+		funcionrf: funcionrf,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente8").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+
 </body>
 </html>
