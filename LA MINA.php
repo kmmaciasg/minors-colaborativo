@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./css/main.css">
-</head>
+   </head>
 <body>
 	<!-- SideBar -->
 	<section class="full-box cover dashboard-sideBar">
@@ -240,6 +240,33 @@
 								<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
 								<br><br>
 </form>
+       
+<div id="ventana-emergente" style="display: none;">
+		   <div class="mdl-grid">
+		   <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+									   
+   <h4>Modificar Actividad</h4>
+   <form>
+	   <label >Id Proyecto:</label>
+	   <input type="text" id="idproyecto" readonly><br>
+	   <label >Id Actividad:</label>
+	   <input type="text" id="idactividad" readonly><br>
+	   <label >Descripcion:</label>
+	   <textarea id="descripcion"></textarea><br>
+	   <label>Encargado:</label>
+	   <input type="text" id="encargado"><br>
+       <label>Notas:</label>
+	   <input type="text" id="notas"><br>
+       <label>Avance:</label>
+	   <input type="text" id="avance"><br>
+	  <br>
+
+	   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-primary" style="margin-left: 85px;" id="btn-guardar-cambios">
+								<i class="zmdi zmdi-check"> Guardar Cambios</i>
+							</button>
+	     </form>
+</div>
+		   </div></div>       
 <form id="actividadesForm">
     <div class="table-responsive">
         <table id="tablaActividades" class="table table-hover text-center">
@@ -256,8 +283,12 @@
         <tbody></tbody>
         </table>
     </div>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 255px;" id="agregaractividad">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 185px;" id="agregaractividad">
         <i class="zmdi zmdi-check">Agregar Actividad</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+    </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored bg-secundary" style="margin-left: 55px;" id="actualizaractividad">
+        <i class="zmdi zmdi-check">Actualizar Actividad</i>
         <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
     </button>
     <br><br>
@@ -1517,5 +1548,73 @@
 	<script>
 		$.material.init();
 	</script>
+     <script>
+        $(document).ready(function() {
+            // Agregamos el evento click al botón
+            $("#actualizaractividad").click(function() {
+				event.preventDefault()
+                // Pedimos al usuario el ID del lote
+                var id_lote = prompt("Introduce el ID de la actividad a modificar:");
+                var url = window.location.href;
+        var nombreProyecto = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+       
+                // Realizamos la petición AJAX para buscar el lote
+                $.ajax({
+                    url: "buscar_actividades.php",
+                    type: "POST",
+                    data: {id_lote: id_lote,nombreProyecto:nombreProyecto},
+                    dataType: "json",
+                    success: function(resultado) {
+                        // Mostramos la ventana emergente con los datos del lote
+                        $("#ventana-emergente").show();
+
+                        // Llenamos los campos de la ventana emergente con los datos del lote
+						
+                        $("#idproyecto").val(resultado.idproyecto);
+                        $("#idactividad").val(resultado.id);
+                        $("#descripcion").val(resultado.descripcion);
+                        $("#encargado").val(resultado.encargado);
+                        $("#notas").val(resultado.notas);
+                        $("#avance").val(resultado.avance);
+                    },
+                    error: function() {
+                        alert("Error al buscar el lote");
+                    }
+                });
+            });
+			// Agregamos el evento click al botón de guardar cambios
+            $("#btn-guardar-cambios").click(function() {
+                // Obtenemos los datos de la ventana emergente
+                var idproyecto = $("#idproyecto").val();
+                var idactividad = $("#idactividad").val();
+                var descripcion = $("#descripcion").val();
+                var encargado = $("#encargado").val();
+                var notas = $("#notas").val();
+                var avance = $("#avance").val();
+
+// Realizamos la petición AJAX para guardar los cambios en la base de datos
+$.ajax({
+	url: "modificar_actividades.php",
+	type: "POST",
+	data: {
+		idproyecto: idproyecto,
+		idactividad: idactividad,
+		descripcion: descripcion,
+		encargado: encargado,
+		notas: notas,
+		avance: avance,
+	},
+	success: function() {
+		alert("Los cambios se han guardado correctamente");
+		$("#ventana-emergente").hide();
+	},
+	error: function() {
+		alert("Error al guardar los cambios");
+	}
+});
+});
+});
+</script>
+
 </body>
 </html>
