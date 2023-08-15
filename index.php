@@ -10,23 +10,35 @@
 	<form action="home.php" method="POST" autocomplete="off" class="full-box logInForm">
 		<p class="text-center text-muted">
 			<img src="./assets/img/avatar.jpg" alt="UserIcon" style="max-width: 100px; max-height: 100px;">
-		  </p>
+		</p>
 		<p class="text-center text-muted text-uppercase">Iniciar sesión</p>
 		<div class="form-group label-floating">
-		  <label class="control-label" for="UserEmail">Usuario</label>
-		  <input class="form-control" id="UserEmail" type="email">
-		  <p class="help-block">Escribe tú Usuario</p>
+			<label class="control-label" for="UserEmail">Usuario</label>
+			<input class="form-control" id="UserEmail" type="email">
+			<p class="help-block">Escribe tu Usuario</p>
 		</div>
 		<div class="form-group label-floating">
-		  <label class="control-label" for="UserPass">Contraseña</label>
-		  <input class="form-control" id="UserPass" type="text">
-		  <p class="help-block">Escribe tú contraseña</p>
+			<label class="control-label" for="UserPass">Contraseña</label>
+			<input class="form-control" id="UserPass" type="password">
+			<p class="help-block">Escribe tu contraseña</p>
 		</div>
 		<div class="form-group text-center">
 			<input type="submit" value="Iniciar sesión" class="btn btn-raised btn-danger">
 		</div>
+		<div class="form-group text-center">
+			<p class="text-muted">
+				<a href="olvidecontraseña.php">¿Olvidaste tu contraseña?</a>
+			</p>
+			<button id="crearCuentaBtn" class="btn btn-raised btn-primary" type="button">Crear Cuenta Nueva</button>
+		</div>
 	</form>
-	<!--====== Scripts -->
+	
+	<script>
+		document.getElementById("crearCuentaBtn").addEventListener("click", function() {
+			
+			window.location.href = "registro.php";
+		});
+	</script>
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/material.min.js"></script>

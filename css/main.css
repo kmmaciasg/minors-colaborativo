@@ -124,7 +124,7 @@ body, html{
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 90%;
-	max-width: 300px;
+	max-width: 400px;
 	padding: 15px;
 	box-shadow: 0 0 3px rgba(0,0,0,.7);
 	border-radius: 0 0 2px 2px;
@@ -134,6 +134,32 @@ body, html{
 .logInForm label{
 	color: #FFF;
 }
+
+.newForm {
+    position: absolute;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px; /* Aumenta el ancho máximo para abarcar ambas columnas */
+    padding: 15px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+    border-radius: 0 0 2px 2px;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex; /* Cambio importante: usar flexbox */
+    justify-content: space-between; /* Espacio entre los elementos */
+}
+.newForm p,
+.newForm label{
+	color: #FFF;
+}
+.newForm .col-md-6 {
+    width: calc(50% - 15px); /* Restar el espacio del padding */
+    padding: 0; /* Eliminar el padding para que los elementos estén alineados */
+    box-sizing: border-box; /* Incluir el padding en el ancho del elemento */
+}
+
 /*============ Partes del dashboard*/
 .dashboard-sideBar,
 .dashboard-contentPage{
@@ -417,7 +443,7 @@ body, html{
 }
 .tile-number{
 	right: 0;
-	-webkit-user-select: none;
+	user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 }
@@ -541,8 +567,8 @@ body, html{
         height: 60px;
         left: 50%;
         margin-left: -30px;
-        -webkit-transform: translateZ(0);
-        -webkit-backface-visibility: hidden;
+        transform: translateZ(0);
+        backface-visibility: hidden;
     }
     .cd-timeline-img img{
         width: 60px;
