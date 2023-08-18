@@ -1,11 +1,8 @@
 <?php
-// ... (código previo)
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+// ... (configuración de conexión a la base de datos)
 
-require 'vendor/autoload.php'; // Ajusta la ruta al archivo autoload.php de PHPMailer
+include "conexiondb.php"; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ... (obtener datos del formulario)
@@ -18,35 +15,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_password = $_POST["user_password"];
     $user_passwordc = $_POST["user_passwordc"];
 
-    // Generar un código de verificación aleatorio
-    $verificationCode = rand(1000, 9999);
-    // Crear instancia de PHPMailer
-    $mail = new PHPMailer(true);
-    try {
-        // Configuración del servidor SMTP
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Servidor SMTP de Hotmail
-        $mail->SMTPAuth = true;
-        $mail->Username = 'karencitamacias2001@gmail.com'; // Tu dirección de correo de Hotmail
-        $mail->Password = 'Amber7810*'; // Tu contraseña de Hotmail
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Usar TLS
-        $mail->Port = 587; // Puerto SMTP de Hotmail
+    // Genera el código de verificación
+    $verificationCode = rand(100000, 999999);
 
-        // Destinatario y remitente
-        $mail->setFrom('karencitamacias2001@gmail.com', 'MINOR');
-        $mail->addAddress($user_email, $user_name); // Agrega el destinatario
+    $to = "$user_email";
+    $subject = "Codigo de Verificacion Aplicativo Minor";
+    $message = "Tu codigo de verificacion es: " . $verificationCode;
+    $headers = "From: karencitamacias2001@gmail.com";
 
-        // Contenido del correo electrónico
-        $mail->Subject = 'Código de Verificación';
-        $mail->Body = 'Tu código de verificación es: ' . $verificationCode;
+    if (mail($to, $subject, $message, $headers)) {
+        // Inserta los datos en la base de datos
+        $sql = "INSERT INTO usuarios (nombre, correo, telefono, asignacion, departamento, password, verification_code) 
+                VALUES ('$user_name', '$user_email', '$cel', '$asignacion', '$departamento', '$user_password', '$verificationCode')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "Registro exitoso. Se ha enviado un código de verificación a tu correo electrónico.";
+            sleep(6);
 
-        // Enviar el correo
-        $mail->send();
-        echo "Registro exitoso. Se ha enviado un código de verificación a tu correo electrónico.";
-    } catch (Exception $e) {
-        echo "Error al enviar el correo: {$mail->ErrorInfo}";
+            header("Location: confirmar_cuenta.php?user_email=" . urlencode($user_email));
+    } else {
+            echo "Error al registrar en la base de datos: ";
+        }
+    } else {
+        echo "Error al enviar el correo.";
     }
+
     // ... (cierre de conexión de base de datos)
 }
 ?>
+
 

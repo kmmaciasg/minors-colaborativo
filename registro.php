@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <form action="procesar_registro.php" method="POST" autocomplete="off" class="full-box newForm">
-    <div class="container">
+<form action="procesar_registro.php" method="POST" autocomplete="off" class="full-box newForm" onsubmit="return validateForm();">
+ <div class="container">
         <p class="text-center text-muted text-uppercase">Crear una cuenta</p>
                
         <div class="row">
@@ -65,13 +65,13 @@
         </div>
         <div class="col-md-6" style="margin-left: 200px;">
             <div class="form-group label-floating text-center">
-                <label class="control-label" for="UserPass">Contraseña</label>
-                <input class="form-control" id="UserPass" name="user_password" type="password">
+                <label class="control-label" for="user_password">Contraseña</label>
+                <input class="form-control" id="user_password" name="user_password" type="password">
                 <p class="help-block">Ingresa tu contraseña</p>
             </div>
             <div class="form-group label-floating text-center">
-                <label class="control-label" for="UserPassc">Confirma tu contraseña</label>
-                <input class="form-control" id="UserPassc" name="user_passwordc" type="password">
+                <label class="control-label" for="user_passwordc">Confirma tu contraseña</label>
+                <input class="form-control" id="user_passwordc" name="user_passwordc" type="password">
                 <p class="help-block">Confirma tu contraseña</p>
             </div>
             <div class="form-group text-center">
@@ -88,7 +88,26 @@
 
 </body>
 
-	
+
+<script>
+    function validateForm() {
+        var password = document.getElementById("user_password").value;
+        var confirmPassword = document.getElementById("user_passwordc").value;
+
+        if (password === "" || confirmPassword === "") {
+            alert("Contraseñas vacías. Ingresa ambas contraseñas para continuar.");
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Las contraseñas no coinciden. Ingresa contraseñas iguales.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/material.min.js"></script>

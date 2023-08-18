@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<form action="procesar_registro.php" method="POST" autocomplete="off" class="full-box newForm">
+<form action="cambiar_contraseña.php" method="POST" autocomplete="off" class="full-box newForm">
     <div class="container">
         
                 <div class="form-group text-center">

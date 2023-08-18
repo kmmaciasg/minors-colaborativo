@@ -7,19 +7,19 @@
 	<link rel="stylesheet" href="./css/main.css">
 </head>
 <body class="cover" style="background-image: url(./assets/img/loginFont.jpg);">
-	<form action="home.php" method="POST" autocomplete="off" class="full-box logInForm">
+	<form action="login.php" method="POST" autocomplete="off" class="full-box logInForm">
 		<p class="text-center text-muted">
 			<img src="./assets/img/avatar.jpg" alt="UserIcon" style="max-width: 100px; max-height: 100px;">
 		</p>
 		<p class="text-center text-muted text-uppercase">Iniciar sesión</p>
 		<div class="form-group label-floating">
 			<label class="control-label" for="UserEmail">Usuario</label>
-			<input class="form-control" id="UserEmail" type="email">
+			<input class="form-control" id="UserEmail" name="UserEmail" type="email">
 			<p class="help-block">Escribe tu Usuario</p>
 		</div>
 		<div class="form-group label-floating">
 			<label class="control-label" for="UserPass">Contraseña</label>
-			<input class="form-control" id="UserPass" type="password">
+			<input class="form-control" id="UserPass" name="UserPass"  type="password">
 			<p class="help-block">Escribe tu contraseña</p>
 		</div>
 		<div class="form-group text-center">
